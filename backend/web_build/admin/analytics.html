@@ -1,0 +1,120 @@
+{% extends "admin/base_site.html" %}
+
+<div id="content">
+  {% block content %}
+  <h1>Analytics</h1>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+  <script>
+    let analytics_signup_per_day = JSON.parse(`{{analytics_signup_per_day|safe}}`);
+    let dateList = analytics_signup_per_day.map(item=>item.date);
+    let vendorData = [], customersData=[];
+    analytics_signup_per_day.forEach(item => {
+      if (item.user_role == 2) {
+        vendorData.push(item.dcount)
+      }
+      if (item.user_role == 1) {
+        customersData.push(item.dcount)
+      }
+    });
+
+
+    
+    let checkIn_by_vendor = JSON.parse(`{{checkIn_by_vendor|safe}}`);
+    console.log(checkIn_by_vendor)
+    let checkIn_by_vendor_data = checkIn_by_vendor.map(item=>item.dcount)
+    let checkIn_by_vendor_xAxis = checkIn_by_vendor.map(item=>item.restaurant__name)
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      const analytics_signup_per_day_chart = Highcharts.chart('analytics_signup_per_day', {
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Analytics Singup Per Day'
+        },
+        xAxis: {
+          categories: dateList
+        },
+        yAxis: {
+          title: {
+            text: 'Signup'
+          }
+        },
+        series: [{
+          name: 'Vendor',
+          data: vendorData
+        }, {
+          name: "Customer",
+          data: customersData
+        }]
+      });
+
+      const checkIn_by_vendor_chart = Highcharts.chart('checkIn_by_vendor', {
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Analytics CheckIn VS Vendors'
+        },
+        xAxis: {
+          categories: checkIn_by_vendor_xAxis
+        },
+        yAxis: {
+          title: {
+            text: 'CheckIn'
+          }
+        },
+        series: [{
+          name: 'Vendors',
+          data: checkIn_by_vendor_data
+        }]
+      });
+
+
+    });
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //   const chart = Highcharts.chart('analytics_signup_per_day', {
+    //     chart: {
+    //       type: 'column'
+    //     },
+    //     title: {
+    //       text: 'Analytics Singup Per Day'
+    //     },
+    //     xAxis: {
+    //       categories: dateList
+    //     },
+    //     yAxis: {
+    //       title: {
+    //         text: 'Signup'
+    //       }
+    //     },
+    //     series: [{
+    //       name: 'Vendor',
+    //       data: vendorData
+    //     }, {
+    //       name: "Customer",
+    //       data: customersData
+    //     }]
+    //   });
+    // });
+
+
+
+
+
+  </script>
+
+  <figure class="highcharts-figure">
+    <div id="analytics_signup_per_day"></div>
+    <div id="checkIn_by_vendor"></div>
+  </figure>
+  {% endblock content%}
+</div>

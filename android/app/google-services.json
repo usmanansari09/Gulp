@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "253771587734",
+    "project_id": "gulp-c3407",
+    "storage_bucket": "gulp-c3407.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253771587734:android:2e2387351908bd855da2b7",
+        "android_client_info": {
+          "package_name": "com.gulp_28149"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253771587734-cibc9tjf86rp5o03hll0a9o65o0p37m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKhcVO3i5jUuJq7K4T0XpGd3KRKjqVbXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253771587734-cibc9tjf86rp5o03hll0a9o65o0p37m3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "253771587734-3243rh3qjomd8olu3f42vpg83tjtsigr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.crowdbotics.jolly-darkness-28149-7132235b"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
